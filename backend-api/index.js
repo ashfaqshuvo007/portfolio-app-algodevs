@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const apitRoutes = require('./api-routes/index')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 //set Path for dotenv config
 dotenv.config({ path: './config/config.env' })
@@ -29,8 +30,8 @@ if (!db) {
 }
 
 
-
-
+//Enabling cors
+app.use(cors())
 
 //defining api Routes
 app.use('/api', apitRoutes)
