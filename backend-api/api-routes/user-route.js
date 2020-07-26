@@ -1,14 +1,20 @@
 //Initialize express router
 const router = require('express').Router()
 //Import user controller
-const contactController = require('../controllers/UserController')
+const userController = require('../controllers/UserController')
 
-router.get('/', (req, res) => {
-    res.json({
-        'status': 'Route path to api/user working',
-        'message': 'Welcome to user routes'
-    })
-})
+//Route to api/users/
+router.route('/')
+    .get(userController.index)
+    .post(userController.create)
 
 
+//Route to api/users/;user_id
+router.route('/:user_id')
+    .get(userController.view)
+    .put(userController.update)
+    .patch(userController.update)
+    .delete(userController.delete)
+
+//Export API routes
 module.exports = router;
